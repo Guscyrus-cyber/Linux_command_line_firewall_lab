@@ -66,8 +66,7 @@ The dataset structure;
 Using this command:\
 awk '{print \$X}' firewall_logs.log \| sort \| uniq\
 This command extracts and displays unique values from a specific field in the firewall logs, where X represents the field (column) number to investigate.\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-\
+
 This dataset is good for:
 
 grep\
@@ -90,7 +89,7 @@ user activity review\
 threat hunting\
 firewall log parsing\
 SOC-style CLI investigations\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
+
 
 Last login: Thu May 21 21:15:02 
 
@@ -125,10 +124,8 @@ cat firewall_logs.log
 
 Displays all firewall logs\
 Analyst reviews all traffic events\
-\
-\
 
-\
+
 **Top of Form Count Total Events**\
 \
 Bash:
@@ -138,7 +135,7 @@ wc -l firewall_logs.log
 Counts total log entries\
 Helps analyst know log volume\
 15 firewall events recorded\
-\
+
 
 Find Blocked Traffic\
 
@@ -158,7 +155,6 @@ TELNET\
 VNC
 
 External systems attempted dangerous access\
-\
 
 
 Count Blocked Attempts\
@@ -170,9 +166,8 @@ grep "action=BLOCK" firewall_logs.log \| wc -l
 Counts total blocked attacks
 
 Firewall blocked 7 suspicious connections\
-\
 
-Find Suspicious Source Ips\
+Find Suspicious Source Ips
 
 Bash:
 
@@ -190,7 +185,6 @@ src_ip=66.66.66.66\
 src_ip=201.201.201.201\
 \
 {print \$3} in the awk command means “print the third field (third column) from each matching log line,” and because the firewall logs contain 7 blocked attack lines, the third field displayed 7 different attacker source IP addresses.\
-\
 
 Finding Most Targeted Ports
 
@@ -252,7 +246,6 @@ grep "dst_port=3389" firewall_logs.log
 
 Looks for Remote Desktop attacks\
 That’s a Common attacker technique\
-\
 
 Showing Allowed Traffic Only
 
@@ -262,7 +255,6 @@ grep "action=ALLOW" firewall_logs.log
 
 Displaying legitimate traffic\
 Normal employee/business connections\
-\
 
 Finding HTTPS Traffic
 
@@ -272,7 +264,6 @@ grep "dst_port=443" firewall_logs.log
 
 Investigates encrypted HTTPS traffic\
 It Users accessed secure websites/cloud services\
-\
 
 
 Listing Unique users
@@ -293,7 +284,6 @@ user=frank\
 user=grace\
 user=john\
 user=unknown\
-\
 
 Listing Unique Applications\
 \
@@ -326,7 +316,7 @@ app=SSH
 app=TELNET
 
 app=VNC\
-\
+
 
 Listing Uniques source IP Addresses\
 \
@@ -365,7 +355,7 @@ src_ip=66.66.66.66
 src_ip=77.77.77.77
 
 src_ip=91.214.124.10\
-\
+
 
 Finding Largest Data Transfers
 
@@ -375,7 +365,7 @@ sort -t= -k9 -n firewall_logs.log
 
 Helps identify large traffic transfers\
 Useful in exfiltration investigations\
-\
+
 
 Real SOC Investigation Example
 
@@ -412,7 +402,7 @@ The output shows that the source IP address:
 123.123.123.123
 
 attempted the SMB attack because it tried to connect to destination port 445, and the firewall blocked the connection.\
-\
+
 
 Timeline Investigation\
 \
