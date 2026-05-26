@@ -48,9 +48,6 @@ nano firewall_logs.log\
 2026-05-21T08:14:55 action=ALLOW src_ip=192.168.1.100 dst_ip=172.217.14.206 protocol=TCP src_port=51521 dst_port=443 bytes=9000 user=grace app=GOOGLE\
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
 \
-\
-\
-\
 The dataset structure;
 
 | **Field** | **Value** |
@@ -69,7 +66,7 @@ The dataset structure;
 Using this command:\
 awk '{print \$X}' firewall_logs.log \| sort \| uniq\
 This command extracts and displays unique values from a specific field in the firewall logs, where X represents the field (column) number to investigate.\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
 \
 This dataset is good for:
 
@@ -93,9 +90,9 @@ user activity review\
 threat hunting\
 firewall log parsing\
 SOC-style CLI investigations\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_**\
-\**
-Last login: Thu May 21 21:15:02 on ttys000
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
+
+Last login: Thu May 21 21:15:02 
 
 Guscyrus@SOC-Lab:~ \$ cd ~/Downloads
 
@@ -108,12 +105,10 @@ Guscyrus@SOC-Lab:~/Downloads/firewall_investigation_lab \$ nano firewall_logs.lo
 Guscyrus@SOC-Lab:~/Downloads/firewall_investigation_lab \$ ls -lh
 
 total 8\
--rw-r--r-- 1 Guscyrus staff 2.1K May 21 21:28 firewall_logs.log**\**
-\
-**\**
-<img src="Linux_firewall_images/media/image1.png" style="width:6.5in;height:2.89375in" alt="A screenshot of a computer Description automatically generated" />**\
-\**
-Last login: Thu May 21 21:59:01 on ttys000
+-rw-r--r-- 1 Guscyrus staff 2.1K May 21 21:28 firewall_logs.log
+
+
+Last login: Thu May 21 21:59:01 
 
 Guscyrus@SOC-Lab:~ \$ cd ~/Downloads/firewall_investigation_lab
 
@@ -122,12 +117,7 @@ Guscyrus@SOC-Lab:~/Downloads/firewall_investigation_lab \$ ls -lh
 total 8
 
 -rw-r--r-- 1 Guscyrus staff 2.1K May 21 21:28 firewall_logs.log\
-\
-<img src="Linux_firewall_images/media/image2.png" style="width:6.5in;height:2.61875in" alt="A screenshot of a computer Description automatically generated" />\
-\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-\
-\
+
 View the Dataset\
 \
 Bash:\
@@ -137,11 +127,9 @@ Displays all firewall logs\
 Analyst reviews all traffic events\
 \
 \
-<img src="Linux_firewall_images/media/image3.png" style="width:6.5in;height:1.81181in" alt="A screenshot of a computer Description automatically generated" />\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
+
 \
-\
-**Top of FormCount Total Events**\
+**Top of Form Count Total Events**\
 \
 Bash:
 
@@ -151,12 +139,9 @@ Counts total log entries\
 Helps analyst know log volume\
 15 firewall events recorded\
 \
-<img src="Linux_firewall_images/media/image4.png" style="width:6.5in;height:0.45486in" />\
-\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-**Find Blocked Traffic\
-\**
+Find Blocked Traffic\
+
 Bash:
 
 grep "action=BLOCK" firewall_logs.log
@@ -174,10 +159,7 @@ VNC
 
 External systems attempted dangerous access\
 \
-\
-<img src="Linux_firewall_images/media/image5.png" style="width:6.5in;height:0.91806in" alt="A screenshot of a computer Description automatically generated" />\
-\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
 
 Count Blocked Attempts\
 \
@@ -189,13 +171,9 @@ Counts total blocked attacks
 
 Firewall blocked 7 suspicious connections\
 \
-\
-<img src="Linux_firewall_images/media/image6.png" style="width:6.5in;height:0.91806in" alt="A screenshot of a computer Description automatically generated" />\
-\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 Find Suspicious Source Ips\
-\
+
 Bash:
 
 grep "action=BLOCK" firewall_logs.log \| awk '{print \$3}'
@@ -213,9 +191,6 @@ src_ip=201.201.201.201\
 \
 {print \$3} in the awk command means “print the third field (third column) from each matching log line,” and because the firewall logs contain 7 blocked attack lines, the third field displayed 7 different attacker source IP addresses.\
 \
-<img src="Linux_firewall_images/media/image7.png" style="width:6.5in;height:0.75in" />\
-\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 Finding Most Targeted Ports
 
@@ -256,30 +231,9 @@ Attackers targeted these ports
 | 5900 | VNC | Remote desktop/control service |
 |------|-----|--------------------------------|
 
-<img src="Linux_firewall_images/media/image8.png" style="width:6.5in;height:0.77222in" />**\**
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_**\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\**
+
+
+
 Investigate SSH Attacks
 
 Bash:
@@ -288,12 +242,8 @@ grep "dst_port=22" firewall_logs.log
 
 Investigates SSH attack attempts\
 Hacker attempted remote SSH access\
-\
-<img src="Linux_firewall_images/media/image9.png" style="width:6.5in;height:0.54167in" />\
-\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-\
-\
+
+
 Investigate RDP Attacks
 
 Bash:
@@ -303,12 +253,7 @@ grep "dst_port=3389" firewall_logs.log
 Looks for Remote Desktop attacks\
 That’s a Common attacker technique\
 \
-\
-<img src="Linux_firewall_images/media/image10.png" style="width:6.5in;height:1.44167in" alt="A screenshot of a computer Description automatically generated" />\
-\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-\
-\
+
 Showing Allowed Traffic Only
 
 Bash:
@@ -318,11 +263,7 @@ grep "action=ALLOW" firewall_logs.log
 Displaying legitimate traffic\
 Normal employee/business connections\
 \
-\
-<img src="Linux_firewall_images/media/image11.png" style="width:6.5in;height:0.95625in" alt="A close up of a text Description automatically generated" />\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-\
-\
+
 Finding HTTPS Traffic
 
 Bash:
@@ -332,10 +273,8 @@ grep "dst_port=443" firewall_logs.log
 Investigates encrypted HTTPS traffic\
 It Users accessed secure websites/cloud services\
 \
-<img src="Linux_firewall_images/media/image12.png" style="width:6.5in;height:0.95625in" alt="A close up of a text Description automatically generated" />\
-\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-\
+
+
 Listing Unique users
 
 Bash:
@@ -355,10 +294,7 @@ user=grace\
 user=john\
 user=unknown\
 \
-<img src="Linux_firewall_images/media/image13.png" style="width:6.5in;height:1.95556in" alt="A screenshot of a computer Description automatically generated" />\
-\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-\
+
 Listing Unique Applications\
 \
 awk '{print \$10}' firewall_logs.log \| sort \| uniq\
@@ -391,11 +327,7 @@ app=TELNET
 
 app=VNC\
 \
-<img src="Linux_firewall_images/media/image14.png" style="width:6.5in;height:1.5875in" alt="A screenshot of a computer Description automatically generated" />\
-\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-\
-\
+
 Listing Uniques source IP Addresses\
 \
 Command:\
@@ -434,9 +366,7 @@ src_ip=77.77.77.77
 
 src_ip=91.214.124.10\
 \
-<img src="Linux_firewall_images/media/image15.png" style="width:6.5in;height:1.56667in" alt="A screenshot of a computer Description automatically generated" />\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-\
+
 Finding Largest Data Transfers
 
 Command:
@@ -446,9 +376,6 @@ sort -t= -k9 -n firewall_logs.log
 Helps identify large traffic transfers\
 Useful in exfiltration investigations\
 \
-\
-<img src="Linux_firewall_images/media/image16.png" style="width:6.5in;height:1.51319in" alt="A screenshot of a computer Description automatically generated" />\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 Real SOC Investigation Example
 
@@ -486,10 +413,7 @@ The output shows that the source IP address:
 
 attempted the SMB attack because it tried to connect to destination port 445, and the firewall blocked the connection.\
 \
-<img src="Linux_firewall_images/media/image17.png" style="width:6.5in;height:0.33264in" />\
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-\
-\
+
 Timeline Investigation\
 \
 Command:
@@ -503,11 +427,6 @@ tail firewall_logs.log
 Reviews first or latest events\
 Helps analyst build timeline
 
-<img src="Linux_firewall_images/media/image18.png" style="width:6.5in;height:2.03542in" alt="A screenshot of a computer code Description automatically generated" />
-
-Top of Form
-
-Bottom of Form
 
 What was this lab about:
 
